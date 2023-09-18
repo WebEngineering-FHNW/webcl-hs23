@@ -1,24 +1,21 @@
 body {
-    margin-top:     2em;
+    margin-top:     2rem;
     font-family:    "Helvetica Neue", sans-serif;
 }
 main {
-    max-width:  40em;
-    margin:     auto;
-    padding:    2em;
-    box-shadow: 0 4px  8px 0 rgba(0, 0, 0, 0.2),
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width:      max-content;
+    margin-inline:  auto;
+    padding:        2rem;
+    box-shadow:     0 .3rem .5rem 0 rgba(0, 0, 0, 0.2),
+                    0 .4rem  1rem 0 rgba(0, 0, 0, 0.2);
 }
 h1 {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    text-align: center;
-}
-.holder {
-    margin: 0 3em 0 3em;
+    font-family:    "Comic Sans MS", cursive, sans-serif;
+    text-align:     center;
 }
 input[type=text] {
     font-family:    "Comic Sans MS", cursive, sans-serif;
-    font-size:      1.1em;
+    font-size:      1.1rem;
     color:          darkblue;
     border-width:   0 0 1px 0;
 }
@@ -27,18 +24,19 @@ input[type=text]:focus {
     outline:        transparent none 0;
 }
 #todoContainer {
-    display:        grid;
-    grid-column-gap: 0.5em;
-    grid-template-columns: 1.7em auto auto;
-    margin-bottom:  0.5em ;
+    display:                grid;
+    grid-column-gap:        0.5rem;
+    grid-template-columns:  1.7rem auto auto;
+    margin-bottom:          0.5rem ;
 }
-#plus, #fortune {
-    position: relative;
-    top: -1em;
+button#plus,
+button#fortune {
+    position:       relative;
+    top:            -1rem;
 }
-.delete {
-    background-color: transparent;
-    border: none;
-    color: red;
-    font-size: 1.3em;
+button.delete {
+    background-color:   transparent;
+    border:             none;
+    color:              red;
+    font-size:          1.3rem;
 }
