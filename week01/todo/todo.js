@@ -111,7 +111,7 @@ const TodoTotalView = (todoController, numberOfTasksElement) => {
 const TodoOpenView = (todoController, numberOfOpenTasksElement) => {
 
     const render = () =>
-        numberOfOpenTasksElement.innerText = "" + todoController.numberOfOpenTasks();
+        numberOfOpenTasksElement.textContent = "" + todoController.numberOfOpenTasks();
 
     // binding
 

@@ -19,7 +19,6 @@ const Scheduler = () => {
         process();
     }
     return {
-        add: add,
-        addOk: task => add( ok => { task(); ok(); }) // convenience
+        add: add// convenience
     }
 };
