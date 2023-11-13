@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog Example</title>
+    <style>
+
+        main {
+            margin: 3em;
+        }
+        dialog {
+            border-radius: .5em;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<main>
+
+
+    <dialog id="favDialog" >
+      <form method="dialog">
+        <p><label>My favorite module is:
+          <select>
+            <option value="default">Choose...</option>
+            <option value="correct">Web Clients</option>
+            <option>Web Programming</option>
+            <option>Workshop Web</option>
+            <option>Workshop Web Experience</option>
+            <option>Code Kitchen</option>
+          </select>
+        </label></p>
+        <div>
+          <button value="cancel">Cancel</button>
+          <button id="confirmBtn" value="default">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+
+    <p>
+      <button id="updateDetails">Show Dialog</button>
+    </p>
+
+    <output></output>
+
+</main>
+
+<script>
+    const updateButton  = document .getElementById('updateDetails');
+    const favDialog     = document .getElementById('favDialog');
+    const outputBox     = document .querySelector('output');
+    const selectEl      = favDialog.querySelector('select');
+    const confirmBtn    = favDialog.querySelector('#confirmBtn');
+
+    const browserSupportsDialog = "function" === typeof favDialog.showModal;
+
+    // If a browser doesn't support the dialog, then hide the
+    // dialog contents by default.
+    if ( ! browserSupportsDialog ) {
+        favDialog.hidden = true;
+        /* a fallback script to allow this dialog/form to function
+         for legacy browsers that do not support <dialog>
+         could be provided here.
+        */
+    }
+    // "Update details" button opens the <dialog> in modal fashion
+    updateButton.addEventListener('click', _event =>
+        browserSupportsDialog
+            ? favDialog.showModal()
+            : outputBox.value = "Sorry, the &lt;dialog> API is not supported by this browser."
+    );
+    // "Favorite Module" input sets the value of the submit button
+    selectEl.addEventListener('change', _event =>
+        confirmBtn.value = selectEl.value
+    );
+    // "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+    favDialog.addEventListener('close', _event =>
+        outputBox.value = favDialog.returnValue + " button clicked"
+    );
+
+</script>
+
+
+</body>
+
+</html>

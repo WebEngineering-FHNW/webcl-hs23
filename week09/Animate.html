@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animation Example</title>
+    <style>
+        main {
+            --background-height: 70vh;
+            --ball-height:      6em;
+            position:           relative;
+            background-color:   blue;
+            min-height:         var(--background-height);
+        }
+        #ball {
+            position:           absolute;
+            left:               50%;
+            background-color:   white;
+            width:              var(--ball-height);
+            height:             var(--ball-height);
+            border-radius:      50%;
+        }
+        .startAnimation {
+            animation:          squash linear 1s both alternate infinite;
+        }
+        @keyframes squash {
+
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+
+    <div id="ball" onclick="this.classList.toggle('startAnimation')"></div>
+
+</main>
+
+</body>
+
+</html>
