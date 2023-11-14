@@ -8,8 +8,21 @@
         main {
             margin: 3em;
         }
+
         dialog {
-            border-radius: .5em;
+            border-width: 1px;
+            /*border-top-left-radius:     50% 30%;*/
+            /*border-top-right-radius:    30% 50% ;*/
+            /*border-bottom-right-radius: 50% 30%;*/
+            /*border-bottom-left-radius:  30% 50%;*/
+            border-radius: 50% 30% 50% 30% /
+                           30% 50% 30% 50%;
+
+        }
+        dialog::backdrop {
+            /*background-color: black;*/
+            filter: blur(5px);
+            backdrop-filter: blur(5px);
         }
 
 
@@ -18,7 +31,6 @@
 <body>
 
 <main>
-
 
     <dialog id="favDialog" >
       <form method="dialog">
@@ -48,6 +60,7 @@
 </main>
 
 <script>
+
     const updateButton  = document .getElementById('updateDetails');
     const favDialog     = document .getElementById('favDialog');
     const outputBox     = document .querySelector('output');
