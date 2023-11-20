@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try Layer</title>
+    <style>
+        body {
+            margin: 1em;
+        }
+
+        .box1 p ,
+        .box2 p {
+          color: blue;
+        }
+
+        /* do the above with "is",
+           include formally invalid selectors (.0-such-class)
+           include empty subselects,
+           move around to validate specificity (max in parens)
+        */
+
+        /* style div that has at least two children */
+        /* move around for specificity */
+        /* try the same where no specificity */
+
+    </style>
+</head>
+<body>
+
+<main>
+    <p>I am in normal style</p>
+
+    <div class="box1">
+      <p>I am red.</p>
+    </div>
+
+    <div class="box2">
+        <p>I am red.</p>
+        <p>I am red.</p>
+    </div>
+
+</main>
+</body>
+</html>
