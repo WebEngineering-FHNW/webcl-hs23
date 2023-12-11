@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:,">
+    <title> All Tests from Module</title>
+</head>
+<body>
+
+<h1>All Tests loaded asynchronously from allTestsSuite module.</h1>
+
+<p>Module tests do not work from file in most browsers (but it works with Chrome in debugging mode).</p>
+<p>They must be loaded via http or the browser SOP check and caching must be disabled :-(.</p>
+<p>Consider <code>npx http-server -c-1 </code> web server with no caching.</p>
+
+
+<pre id="out"></pre>
+
+<hr/>
+
+<p>138 Tests expected.</p>
+<p id="grossTotal">Check console for possible errors.</p>
+
+<script type="module">
+
+    import { total } from "./test/test.js";
+    import './allTestsSuite.js';
+
+    document.getElementById('grossTotal').textContent = "" + total + " Tests done.";
+
+</script>
+
+
+</body>
+</html>
