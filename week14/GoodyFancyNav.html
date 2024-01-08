@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Goodie</title>
+
+    <!--    download and install locally!-->
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing:     border-box;
+            margin:         0;
+            padding:        0;
+        }
+        :root {
+            font-family:    ui-sans-serif, sans-serif;
+            --color-dark:   hsl(280, 30%, 20%);
+        }
+        body {
+            display:         flex;
+            justify-content: center;
+            align-items:     center;
+            min-height:      100vh; /* only for trying things out */
+            background:      yellow;
+            background:      var(--color-dark); /* try to disable */
+        }
+
+        /*nav * {*/
+        /*    outline: 3px solid yellow;*/
+        /*}*/
+       nav {
+           --nav-height:    70px;
+           --nav-width:     var(--nav-height); /* is a square */
+           --item-count:    5;
+           --anim-time:     .5s;
+           display:         flex;
+           justify-content: center;
+           align-items:     center;
+           width:           calc( var(--nav-width) * (var(--item-count) + 1) ); /* 5 items plus half a width at start and end */
+           height:          var(--nav-height);
+           background:      white;
+           position:        relative;
+           border-radius:   calc( var(--nav-height) * 0.2 );
+       }
+       nav ul {
+           display:         flex;
+           width:           calc( var(--nav-width) * var(--item-count) );
+       }
+       nav ul li {
+           position:        relative;
+           list-style:      none;
+           width:           var(--nav-height);
+           height:          var(--nav-height);
+           z-index:         1;  /* stay on top of the indicator */
+       }
+        nav ul li a {
+            position:       relative;
+            display:        flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:    center;
+            width:          100%;
+            text-align:     center;
+            font-weight:    500;
+        }
+        nav ul li a .icon {
+            position:       relative;
+            display:        block; /* this should be implied in modern browsers */
+            line-height:    75px;
+            font-size:      1.5em;
+            text-align:     center;
+            transition:     var(--anim-time);
+            color:          var(--color-dark);
+        }
+        nav ul li.active a .icon {
+            transform:      translateY(-32px);
+        }
+
+        nav ul li a .text {
+            position:       absolute;
+            color:          var(--color-dark);
+            font-weight:    400;
+            font-size:      0.75em ;
+            letter-spacing: 0.05em;
+            transition:     var(--anim-time);
+            opacity:        0;
+            transform:      translateY(20px);
+        }
+        nav ul li.active a .text {
+            opacity:        1;
+            transform:      translateY(10px);
+        }
+        .indicator {
+            position:       absolute;
+            top:            -50%;
+            width:          var(--nav-height);
+            height:         var(--nav-height);
+            background:     #facd57;
+            border-radius:  50%;
+            border:         6px solid var(--color-dark);
+            transition:     var(--anim-time);
+        }
+        .indicator::before {
+            content:        '';
+            position:       absolute;
+            top:            50%;
+            left:           -21px; /* these numbers can only be measured, not calculated */
+            width:          20px;
+            height:         20px;
+            background:     transparent;
+            /*outline: 1px solid red;*/
+            border-top-right-radius: 100%;
+            box-shadow:     1px -6px 0 0 var(--color-dark);
+        }
+        .indicator::after {
+            content:        '';
+            position:       absolute;
+            top:            50%;
+            right:          -21px;
+            width:          20px;
+            height:         20px;
+            background:     transparent;
+            border-top-left-radius: 100%;
+            box-shadow:     -1px -6px 0 0 var(--color-dark);
+        }
+        nav ul li:nth-child(1).active ~ .indicator {
+            transform: translateX(calc(var(--nav-width) * 0));
+        }
+        nav ul li:nth-child(2).active ~ .indicator {
+            transform: translateX(calc(var(--nav-width) * 1));
+        }
+        nav ul li:nth-child(3).active ~ .indicator {
+            transform: translateX(calc(var(--nav-width) * 2));
+        }
+        nav ul li:nth-child(4).active ~ .indicator {
+            transform: translateX(calc(var(--nav-width) * 3));
+        }
+        nav ul li:nth-child(5).active ~ .indicator {
+            transform: translateX(calc(var(--nav-width) * 4));
+        }
+
+    </style>
+</head>
+<body>
+<header>
+
+    <nav>
+
+        <ul>
+            <li class="list active">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon></span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="chatbubbles"></ion-icon></span>
+                    <span class="text">Talk</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="images"></ion-icon></span>
+                    <span class="text">Photos</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="cog"></ion-icon></span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+
+    </nav>
+
+</header>
+
+<main>
+
+
+</main>
+
+<script>
+    const list = document.querySelectorAll(".list");
+    const activeLink = selectedItem =>
+        list.forEach( item =>
+            (item === selectedItem)
+            ? selectedItem.classList   .add("active")
+            : item        .classList.remove("active")
+        );
+
+    list.forEach( item => item.addEventListener("click", _ => activeLink(item) ));
+</script>
+
+</body>
+</html>
