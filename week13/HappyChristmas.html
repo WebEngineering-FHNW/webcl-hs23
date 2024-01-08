@@ -80,7 +80,7 @@
             display:    block;
             overflow:   hidden;
             z-index: 1;
-            /*transition: transform 2s ease-out;*/
+            transition: transform 2s ease-out;
         }
         .tree div span:nth-child(1)::before { /*left branch*/
             content: '';
@@ -88,10 +88,10 @@
             width:    200%;
             inset:    0 100% 0 0;
             background: linear-gradient(darkolivegreen, darkseagreen);
-            /*border-top-left-radius:    110% 100%;*/
-            /*border-top-right-radius:     0% 100%;*/
-            /*border-bottom-left-radius:  50%  20%;*/
-            /*border-bottom-right-radius: 50%  20%;*/
+            border-top-left-radius:    110% 100%;
+            border-top-right-radius:     0% 100%;
+            border-bottom-left-radius:  50%  20%;
+            border-bottom-right-radius: 50%  20%;
         }
         .tree div span:nth-child(2)::before { /*right branch*/
             content: '';
@@ -99,10 +99,10 @@
             width:    200%;
             inset:    0 100% 0 -100%;
             background: linear-gradient(darkolivegreen, darkseagreen);
-            /*border-top-left-radius:      0% 100%;*/
-            /*border-top-right-radius:   110% 100%;*/
-            /*border-bottom-left-radius:  50%  20%;*/
-            /*border-bottom-right-radius: 50%  20%;*/
+            border-top-left-radius:      0% 100%;
+            border-top-right-radius:   110% 100%;
+            border-bottom-left-radius:  50%  20%;
+            border-bottom-right-radius: 50%  20%;
         }
 
         #snow {
@@ -121,7 +121,7 @@
         }
         @keyframes fall {
             0% {
-                transform: translateY(-100vh);
+                transform: translateY(-200vh);
             }
             100% {
                 transform: translateY(100vh);
@@ -172,27 +172,27 @@
 <script>
 
     const start = () => document.querySelectorAll(".start").forEach(span => span.classList.remove("start"));
-    //
-    // const makeFlake = _ => ({left: Math.random() * 100, top: (Math.random()) * 100} );
-    // const fast   = Array.from( {length:  4}, makeFlake);
-    // const middle = Array.from( {length: 10}, makeFlake);
-    // const slow   = Array.from( {length: 40}, makeFlake);
-    //
-    // const register = (flakes, size, animationSeconds) => {
-    //     flakes.forEach( flakeModel => {
-    //         const flake = document.createElement("DIV");
-    //         flake.classList.add("flake");
-    //         flake.style.left   = flakeModel.left + "%";
-    //         flake.style.top    = flakeModel.top  + "%";
-    //         flake.style.width  = size;
-    //         flake.style.height = size;
-    //         flake.style['animation-duration'] = (Math.random() + 0.5) * animationSeconds + "s";
-    //         snow.appendChild(flake);
-    //     } );
-    // };
-    // register(fast,   "25px", 5);
-    // register(middle, "18px", 8);
-    // register(slow,   "12px", 10);
+
+    const makeFlake = _ => ({left: Math.random() * 100, top: (Math.random()) * 100} );
+    const fast   = Array.from( {length:  4}, makeFlake);
+    const middle = Array.from( {length: 10}, makeFlake);
+    const slow   = Array.from( {length: 40}, makeFlake);
+
+    const register = (flakes, size, animationSeconds) => {
+        flakes.forEach( flakeModel => {
+            const flake = document.createElement("DIV");
+            flake.classList.add("flake");
+            flake.style.left   = flakeModel.left + "%";
+            flake.style.top    = flakeModel.top  + "%";
+            flake.style.width  = size;
+            flake.style.height = size;
+            flake.style['animation-duration'] = (Math.random() + 0.5) * animationSeconds + "s";
+            snow.appendChild(flake);
+        } );
+    };
+    register(fast,   "25px", 5);
+    register(middle, "18px", 8);
+    register(slow,   "12px", 10);
 
 
 </script>
