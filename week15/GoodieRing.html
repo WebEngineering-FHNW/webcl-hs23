@@ -12,22 +12,20 @@
             --c1: orange;
             --c2: navy;
         }
+        .center-content {
+            display:            grid;
+            place-items:        center;
+        }
         body {
             margin:             0;
             padding:            0;
             width:              100vw;
             height:             100vh;
-            display:            flex;
-            align-items:        center;
-            justify-content:    center;
             background:         linear-gradient(180deg, var(--c2), var(--c1) );
         }
         .content {
             width:              50vmin;
             height:             28vmin;
-            display:            flex;
-            align-items:        center;
-            justify-content:    center;
             transform:          scale(1.5);
         }
         .ring {
@@ -36,7 +34,6 @@
             width:              42vmin;
             height:             18vmin;
             border-radius:      100% 100% 60% 100%;
-            box-sizing:         border-box;
             margin-top:         -4vmin;
             background:         radial-gradient(ellipse at 20vmin 9vmin,
                                     transparent   10vmin ,
@@ -57,9 +54,9 @@
         }
     </style>
 </head>
-<body>
+<body class="center-content">
 
-<div class="content">
+<div class="content center-content">
     <div class="ring"></div>
     <div class="ring"></div>
     <div class="ring"></div>
