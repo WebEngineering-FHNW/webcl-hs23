@@ -12,7 +12,49 @@
             --c1: orange;
             --c2: navy;
         }
-
+        body {
+            margin:             0;
+            padding:            0;
+            width:              100vw;
+            height:             100vh;
+            display:            flex;
+            align-items:        center;
+            justify-content:    center;
+            background:         linear-gradient(180deg, var(--c2), var(--c1) );
+        }
+        .content {
+            width:              50vmin;
+            height:             28vmin;
+            display:            flex;
+            align-items:        center;
+            justify-content:    center;
+            transform:          scale(1.5);
+        }
+        .ring {
+            --color:            var(--c1);
+            position:           absolute;
+            width:              42vmin;
+            height:             18vmin;
+            border-radius:      100% 100% 60% 100%;
+            box-sizing:         border-box;
+            margin-top:         -4vmin;
+            background:         radial-gradient(ellipse at 20vmin 9vmin,
+                                    transparent   10vmin ,
+                                    var(--color)  10vmin
+                                );
+        }
+        .ring:nth-child(2) {
+            --color:            var(--c2);
+            margin-top:         5.85vmin;
+            border-radius:      60% 100% 100% 100%;
+        }
+        .ring:nth-child(3) {
+            clip-path: polygon(
+                            0    0,
+                           50%   0,
+                           50% 100%,
+                            0  100% );
+        }
     </style>
 </head>
 <body>
